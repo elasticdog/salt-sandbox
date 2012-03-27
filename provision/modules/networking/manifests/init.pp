@@ -1,7 +1,7 @@
 # == Class: networking
 #
-# This class configures the hosts file to allow communication between the
-# puppet master and puppet clients using the VirtualBox host-only network.
+# This class configures the hosts file to allow communication between the salt
+# master and salt minions using the VirtualBox host-only network.
 #
 # === Parameters
 #

@@ -7,9 +7,6 @@
 #
 # === Actions
 #
-# - Ensure puppet group exists in order to eliminate the following problem:
-#   https://github.com/camptocamp/puppet-java/issues/4
-#
 # === Requires
 #
 # === Sample Usage
@@ -17,9 +14,5 @@
 #   class { 'vagrant': }
 #
 class vagrant {
-
-  group { 'puppet':
-    ensure => present,
-  }
 
 }

@@ -24,7 +24,7 @@ class mirrors {
       class { 'mirrors::apt': }
     }
     default: {
-      fail("Module '${module_name}' is not currently supported by Puppet Sandbox on ${::operatingsystem}")
+      fail("Module '${module_name}' is not currently supported by Salt Sandbox on ${::operatingsystem}")
     }
   }
 

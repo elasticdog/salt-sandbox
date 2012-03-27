@@ -7,7 +7,7 @@ Vagrant::Config.run do |config|
   config.vm.define :master do |master_config|
     master_config.vm.box = 'centos57'
     master_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
-    master_config.vm.host_name = "puppet.#{domain}"
+    master_config.vm.host_name = "master.#{domain}"
     master_config.vm.network :hostonly, '172.16.32.10'
 
     master_config.vm.provision :puppet do |puppet|
@@ -16,25 +16,25 @@ Vagrant::Config.run do |config|
     end
   end
 
-  config.vm.define :client1 do |client_config|
-    client_config.vm.box = 'centos57'
-    client_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
-    client_config.vm.host_name = "client1.#{domain}"
-    client_config.vm.network :hostonly, '172.16.32.11'
+  config.vm.define :minion1 do |minion_config|
+    minion_config.vm.box = 'centos57'
+    minion_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
+    minion_config.vm.host_name = "minion1.#{domain}"
+    minion_config.vm.network :hostonly, '172.16.32.11'
 
-    client_config.vm.provision :puppet do |puppet|
+    minion_config.vm.provision :puppet do |puppet|
       puppet.manifests_path = 'provision/manifests'
       puppet.module_path = 'provision/modules'
     end
   end
 
-  config.vm.define :client2 do |client_config|
-    client_config.vm.box = 'lucid32'
-    client_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
-    client_config.vm.host_name = "client2.#{domain}"
-    client_config.vm.network :hostonly, '172.16.32.12'
+  config.vm.define :minion2 do |minion_config|
+    minion_config.vm.box = 'centos57'
+    minion_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
+    minion_config.vm.host_name = "minion2.#{domain}"
+    minion_config.vm.network :hostonly, '172.16.32.12'
 
-    client_config.vm.provision :puppet do |puppet|
+    minion_config.vm.provision :puppet do |puppet|
       puppet.manifests_path = 'provision/manifests'
       puppet.module_path = 'provision/modules'
     end

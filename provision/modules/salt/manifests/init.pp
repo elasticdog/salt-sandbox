@@ -1,4 +1,4 @@
-# == Class: mirrors::apt
+# == Class: salt
 #
 # === Parameters
 #
@@ -8,8 +8,8 @@
 #
 # === Sample Usage
 #
-#   class { 'mirrors::apt': }
+#   class { 'salt': }
 #
-class mirrors::apt {
+class salt {
 
 }
