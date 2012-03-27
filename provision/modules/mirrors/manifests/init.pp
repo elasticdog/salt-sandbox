@@ -17,7 +17,7 @@
 class mirrors {
 
   case $::operatingsystem {
-    'centos', 'fedora', 'redhat', 'scientific': {
+    'centos', 'redhat', 'scientific': {
       class { 'mirrors::yum': }
     }
     'debian', 'ubuntu': {

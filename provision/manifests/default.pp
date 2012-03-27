@@ -5,10 +5,12 @@
 # use run stages for minor vagrant environment fixes
 stage { 'pre': before => Stage['main'] }
 
-class { 'mirrors': stage => 'pre' }
-class { 'vagrant': stage => 'pre' }
+class { 'mirrors':    stage => 'pre' }
+class { 'networking': stage => 'pre' }
+class { 'vagrant':    stage => 'pre' }
 
-class { 'networking': }
 class { 'salt': }
 
-if $hostname == 'master' { }
+if $hostname == 'salt' {
+  class { 'salt::server': }
+}

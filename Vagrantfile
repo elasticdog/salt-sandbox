@@ -7,7 +7,7 @@ Vagrant::Config.run do |config|
   config.vm.define :master do |master_config|
     master_config.vm.box = 'centos57'
     master_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
-    master_config.vm.host_name = "master.#{domain}"
+    master_config.vm.host_name = "salt.#{domain}"
     master_config.vm.network :hostonly, '172.16.32.10'
 
     master_config.vm.provision :puppet do |puppet|

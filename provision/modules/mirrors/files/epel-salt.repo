@@ -1,0 +1,13 @@
+[epel-salt]
+name=A parallel remote execution system
+baseurl=http://repos.fedorapeople.org/repos/herlo/salt/epel-$releasever/$basearch/
+enabled=1
+skip_if_unavailable=1
+gpgcheck=0
+
+[epel-salt-source]
+name=A parallel remote execution system - Source
+baseurl=http://repos.fedorapeople.org/repos/herlo/salt/epel-$releasever/SRPMS
+enabled=0
+skip_if_unavailable=1
+gpgcheck=0
