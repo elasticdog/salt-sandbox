@@ -18,6 +18,8 @@
 #
 class salt::server {
 
+  Class['salt::server'] -> Class['salt']
+
   package { 'salt-master':
     ensure => latest,
   }
