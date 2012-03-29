@@ -8,7 +8,7 @@ Vagrant::Config.run do |config|
     master_config.vm.box = 'centos57'
     master_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
     master_config.vm.host_name = "salt.#{domain}"
-    master_config.vm.network :hostonly, '172.16.32.10'
+    master_config.vm.network :hostonly, '172.16.42.10'
 
     master_config.vm.provision :puppet do |puppet|
       puppet.manifests_path = 'provision/manifests'
@@ -20,7 +20,7 @@ Vagrant::Config.run do |config|
     minion_config.vm.box = 'centos57'
     minion_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
     minion_config.vm.host_name = "minion1.#{domain}"
-    minion_config.vm.network :hostonly, '172.16.32.11'
+    minion_config.vm.network :hostonly, '172.16.42.11'
 
     minion_config.vm.provision :puppet do |puppet|
       puppet.manifests_path = 'provision/manifests'
@@ -32,7 +32,7 @@ Vagrant::Config.run do |config|
     minion_config.vm.box = 'centos57'
     minion_config.vm.box_url = 'http://yum.mnxsolutions.com/vagrant/centos57_64.box'
     minion_config.vm.host_name = "minion2.#{domain}"
-    minion_config.vm.network :hostonly, '172.16.32.12'
+    minion_config.vm.network :hostonly, '172.16.42.12'
 
     minion_config.vm.provision :puppet do |puppet|
       puppet.manifests_path = 'provision/manifests'
