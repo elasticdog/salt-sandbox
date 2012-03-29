@@ -2,7 +2,7 @@
 # site.pp - defines defaults for vagrant provisioning
 #
 
-# use run stages for minor vagrant environment fixes
+# use run stages to control overall module load order
 stage { 'pre': before => Stage['main'] }
 
 class { 'mirrors':    stage => 'pre' }
