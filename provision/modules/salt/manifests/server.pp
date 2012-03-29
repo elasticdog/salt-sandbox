@@ -31,7 +31,7 @@ class salt::server {
     mode    => '0640',
     source  => 'puppet:///modules/salt/master.conf',
     require => Package[ 'salt-master' ],
-    notify  => Service[ 'salt-master' ],
+    before  => Service[ 'salt-master' ],
   }
 
   service { 'salt-master':
