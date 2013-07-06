@@ -97,7 +97,7 @@ Check Your Handiwork
 --------------------
 
 To log on to the virtual machines and see the result of your Salt modules, just
-use standard [Vagrant Multi-VM Environment](http://vagrantup.com/docs/multivm.html)
+use standard [Vagrant Multi-Machine Environment](http://docs.vagrantup.com/v2/multi-machine/index.html)
 commands, and provide the proper VM name (`master`, `minion1`, or `minion2`):
 
     $ vagrant ssh master
