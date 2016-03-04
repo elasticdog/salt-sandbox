@@ -1,2 +1,4 @@
+*.pem
+*.pub
 base/*
 .vagrant

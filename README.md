@@ -9,7 +9,7 @@ execution capabilities.
 
 Salt Sandbox will set up three separate virtual machines:
 
-* _salt.example.com_ - the Salt master server
+* _master.example.com_ - the Salt master server
 * _minion1.example.com_ - the first Salt minion machine
 * _minion2.example.com_ - the second Salt minion machine
 
@@ -25,25 +25,29 @@ To use Salt Sandbox, you must have the following items installed and
 working:
 
 * [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](http://vagrantup.com/)
+* [Vagrant](http://vagrantup.com/), version 1.8.1
+* [vagrant-hostmanager](https://github.com/smdahlen/vagrant-hostmanager)
+
+Optionally, there are some Makefile rules included for convenience
+that handle key generation and creating a simple salt state tree. To
+use the included Makefiles, you'll want _GNU make_. The rules assume
+that _openssl_ is available to generate the private and public keys.
 
 Salt Sandbox has been designed for and tested with Vagrant base boxes
 running:
 
-* CentOS 5.7
+* CentOS 6.7, 5.7
 * Ubuntu 10.04 - Lucid Lynx
 
-...although it may work just fine with other distributions/versions.
+...although itshould work just fine with other distributions/versions.
 
 Usage
 =====
 
 Make sure you have a compatible Vagrant base box (if you don't have one
-already, it will download a 64-bit CentOS 5.7 box for you), and then you
+already, it will download a 64-bit CentOS6.7 box for you), and then you
 should be good to clone this repo and go:
 
-    $ vagrant box list
-    centos57
     $ git clone git://github.com/elasticdog/salt-sandbox.git
     $ cd salt-sandbox/
 
@@ -52,13 +56,13 @@ Initial Startup
 
 To bring up the Salt Sandbox environment, issue the following command:
 
-    $ vagrant up
+$make
 
 The following tasks will be handled automatically:
 
 1. The Salt master daemon will be installed and enabled on the master machine.
 2. The Salt minion daemon will be installed and enabled on all three machines.
-3. A host-only network will be set up with all machines knowing how to
+3. Aprivate network will be set up with all machines knowing how to
    communicate with each other.
 4. All minion public keys will be automatically accepted by the master server.
 5. The master server will utilize the `top.sls` file and `base/` directory that
@@ -66,14 +70,15 @@ The following tasks will be handled automatically:
    utilizing VirtualBox's shared folder feature.
 
 All of this is handled using Vagrant's provisioning capabilities and is
-controlled by the manifests under the `provision/` directory. In theory, you
+controlled by the Vagrantfile. In theory, you
 should never have to touch any of that code directly unless you're working to
 improve Salt Sandbox.
 
 If you wish to change the domain name of the VMs (it defaults to
-_example.com_), edit the "domain" variable at the top of `Vagrantfile` and
+_example.com_), edit the "domain" variable at the top of `Vagrantfile` and at the top of keys/Makefile and
 reload the machines:
 
+$ make -C keys domain=otherdomain.com
     $ vim Vagrantfile
     $ vagrant reload
 
@@ -112,5 +117,7 @@ License
 
 Salt Sandbox is provided under the terms of [The MIT
 License](http://www.opensource.org/licenses/MIT).
+
+Copyright &copy; 2016, [Will Estes](westes575@gmail.com).
 
 Copyright &copy; 2012, [Aaron Bull Schaefer](mailto:aaron@elasticdog.com).

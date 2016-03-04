@@ -1,2 +1,0 @@
-* Support CentOS 6 and Arch Linux
-* Make hosts file dynamic based on what is defined in Vagrantfile
