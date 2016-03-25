@@ -21,30 +21,30 @@ better match your production infrastructure.
 
 ##Requirements
 
-To use Salt Sandbox, you must have the following items installed and
+To use `salt sandbox`, you must have the following items installed and
 working:
 
 * [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant](http://vagrantup.com/), version 1.8.1
+* [Vagrant](http://vagrantup.com/), version 1.8.1 or later
 * [vagrant-hostmanager](https://github.com/smdahlen/vagrant-hostmanager)
 
-Optionally, there are some Makefile rules included for convenience
-that handle key generation and creating a simple salt state tree. To
-use the included Makefiles, you'll want _GNU make_. The rules assume
-that _openssl_ is available to generate the private and public keys.
+Optionally, there are some `Makefile` rules included for convenience
+that handle key generation and creating a simple `salt` state tree. To
+use the included `Makefile`s, you'll want `GNU make`. The rules assume
+that `openssl` is available to generate the private and public keys.
 
-Salt Sandbox has been designed for and tested with Vagrant base boxes
+The `salt sandbox` has been designed for and tested with `vagrant` base boxes
 running:
 
 * CentOS 6.7, 5.7
 * Ubuntu 10.04 - Lucid Lynx
 
-...although itshould work just fine with other distributions/versions.
+...although itshould work just fine with other distributions and releases.
 
 ## Usage
 
-Make sure you have a compatible Vagrant base box (if you don't have one
-already, it will download a 64-bit CentOS6.7 box for you), and then you
+Make sure you have a compatible `vagrant` base box (if you don't have one
+already, it will download a 64-bit _CentOS6.7_ box for you), and then you
 should be good to clone this repo and go:
 
 ```bash
@@ -54,7 +54,7 @@ $ cd salt-sandbox/
 
 ### Initial Startup
 
-To bring up the Salt Sandbox environment, issue the following command:
+To bring up the `salt sandbox` environment, issue the following command:
 
 ```bash
 $make
@@ -62,22 +62,22 @@ $make
 
 The following tasks will be handled automatically:
 
-1. The Salt master daemon will be installed and enabled on the master machine.
-2. The Salt minion daemon will be installed and enabled on all three machines.
+1. The `salt master` daemon will be installed and enabled on the master machine.
+2. The `salt minion` daemon will be installed and enabled on all three machines.
 3. A private network will be set up with all machines knowing how to
 communicate with each other.
-4. All minion public keys will be automatically accepted by the master server.
-5. The master server will utilize the `top.sls` file and `base/` directory that
+4. All `minion` public keys will be automatically accepted by the `master` server.
+5. The `master` server will utilize the `top.sls` file and `base/` directory that
 exist **outside of the VMs** (in your salt-sandbox Git working directory) by
-utilizing VirtualBox's shared folder feature.
+utilizing `virtualbox`'s shared folder feature.
 
-All of this is handled using Vagrant's provisioning capabilities and is
-controlled by the Vagrantfile. In theory, you
+All of this is handled using `vagrant`'s provisioning capabilities and is
+controlled by the `Vagrantfile`. In theory, you
 should never have to touch any of that code directly unless you're working to
-improve Salt Sandbox.
+improve `salt sandbox`.
 
 If you wish to change the domain name of the VMs (it defaults to
-_example.com_), edit the "domain" variable at the top of `Vagrantfile` and at the top of keys/Makefile and
+`example.com`), edit the "domain" variable at the top of `Vagrantfile` and at the top of `keys/Makefile` and
 reload the machines:
 
 ```bash
@@ -88,10 +88,10 @@ $ vagrant reload
 
 ### Developing New Modules
 
-To start developing a new SLS module, just create the standard module structure
-under `base/` in your salt-sandbox Git working directory (an example
-"helloworld" module should exist there already). This directory is
-automatically in the Salt master server's _file\_roots_ path, and any changes
+To start developing a `salt` module, just create the standard module structure
+under `base/` in your `salt sandbox` working directory (an example
+`helloworld` module should exist there already). This directory is
+automatically in the `salt master` server's `file\_roots` path, and any changes
 will be picked up immediately.
 
 ```bash
@@ -105,15 +105,15 @@ execution...that's it!
 
 ### Check Your Handiwork
 
-To log on to the virtual machines and see the result of your Salt modules, just
+To log on to the virtual machines and see the result of your `salt` modules, just
 use standard [Vagrant Multi-VM Environment](http://vagrantup.com/docs/multivm.html)
-commands, and provide the proper VM name (`master`, `minion1`, or `minion2`):
+commands, and provide the proper `VM` name (`master`, `minion1`, or `minion2`):
 
 ```bash
 $ vagrant ssh master
 ```
 
-Then instruct all minions to execute a highstate call and apply any applicable
+Then instruct all minions to execute a `highstate` call and apply any applicable
 modules:
 
 ```bash
