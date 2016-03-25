@@ -1,5 +1,6 @@
-Description
-===========
+# salt-sandbox
+
+## Description
 
 Salt Sandbox is a multi-VM [Vagrant](http://vagrantup.com/)-based
 [Salt](http://saltstack.org/) development environment used for creating
@@ -18,8 +19,7 @@ based on node groups, top file environments, grain values, etc. You can
 even test modules on different Linux distributions or release versions to
 better match your production infrastructure.
 
-Requirements
-============
+##Requirements
 
 To use Salt Sandbox, you must have the following items installed and
 working:
@@ -41,8 +41,7 @@ running:
 
 ...although itshould work just fine with other distributions/versions.
 
-Usage
-=====
+## Usage
 
 Make sure you have a compatible Vagrant base box (if you don't have one
 already, it will download a 64-bit CentOS6.7 box for you), and then you
@@ -51,8 +50,7 @@ should be good to clone this repo and go:
     $ git clone git://github.com/elasticdog/salt-sandbox.git
     $ cd salt-sandbox/
 
-Initial Startup
----------------
+### Initial Startup
 
 To bring up the Salt Sandbox environment, issue the following command:
 
@@ -62,7 +60,7 @@ The following tasks will be handled automatically:
 
 1. The Salt master daemon will be installed and enabled on the master machine.
 2. The Salt minion daemon will be installed and enabled on all three machines.
-3. Aprivate network will be set up with all machines knowing how to
+3. A private network will be set up with all machines knowing how to
    communicate with each other.
 4. All minion public keys will be automatically accepted by the master server.
 5. The master server will utilize the `top.sls` file and `base/` directory that
@@ -82,8 +80,7 @@ $ make -C keys domain=otherdomain.com
     $ vim Vagrantfile
     $ vagrant reload
 
-Developing New Modules
-----------------------
+### Developing New Modules
 
 To start developing a new SLS module, just create the standard module structure
 under `base/` in your salt-sandbox Git working directory (an example
@@ -98,8 +95,7 @@ To have your module actually applied to one or more of the minions, edit
 the `top.sls` file and specify how it should be used during state
 execution...that's it!
 
-Check Your Handiwork
---------------------
+### Check Your Handiwork
 
 To log on to the virtual machines and see the result of your Salt modules, just
 use standard [Vagrant Multi-VM Environment](http://vagrantup.com/docs/multivm.html)
@@ -112,8 +108,7 @@ modules:
 
     [vagrant@master ~]$ sudo salt '*' state.highstate
 
-License
-=======
+## License
 
 Salt Sandbox is provided under the terms of [The MIT
 License](http://www.opensource.org/licenses/MIT).
